@@ -1,6 +1,7 @@
 # Gmail-Account-Login
 This program automatically logins you to your gmail account.
-I am wrote this code to check how a protected website responds to a bot.
+
+I wrote this code to check how a protected website responds to a bot.
 Steps-
 * Run the code
 * Enter your Email address.
