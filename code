@@ -1,0 +1,20 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+
+username = input("Please enter your email address or your mobile number. ")
+password = input("Please enter your password. ")
+
+driver = webdriver.Chrome("/home/akshath/Downloads/chromedriver")
+wait = WebDriverWait(driver, 10)
+driver.maximize_window()
+driver.get("https://accounts.google.com/ServiceLogin/identifier?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1&flowName=GlifWebSignIn&flowEntry=AddSession")
+driver.find_element_by_xpath("//*[@id='identifierId']").send_keys(username)
+driver.implicitly_wait(3)
+driver.find_element_by_xpath("//*[@id='identifierNext']/content/span").click()
+wait.until(EC.invisibility_of_element((By.XPATH, "//*[@id='identifierNext']/content/span")))
+driver.find_element_by_xpath("//*[@id='password']/div[1]/div/div[1]/input").send_keys(password)
+driver.implicitly_wait(10)
+driver.find_element_by_css_selector("#passwordNext > content").click()
